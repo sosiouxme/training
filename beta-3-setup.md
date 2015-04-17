@@ -317,13 +317,13 @@ OpenShift's "experimental" command set enables you to install the router
 automatically. Try running it with no options and you should see the note that a
 router is needed:
 
-    openshift ex router
+    openshift admin router
     F0223 11:50:57.985423    2610 router.go:143] Router "router" does not exist
     (no service). Pass --create to install.
 
 So, go ahead and do what it says:
 
-    openshift ex router --create
+    openshift admin router --create
     F0223 11:51:19.350154    2617 router.go:148] You must specify a .kubeconfig
     file path containing credentials for connecting the router to the master
     with --credentials
@@ -335,7 +335,7 @@ credentials the *router* should use to communicate. We also need to specify the
 router image, since currently the experimental tooling points to
 upstream/origin:
 
-    openshift ex router --create \
+    openshift admin router --create \
     --credentials=/var/lib/openshift/openshift.local.certificates/openshift-router/.kubeconfig \
     --images='registry.access.redhat.com/openshift3_beta/ose-${component}:${version}'
 
@@ -364,10 +364,10 @@ Docker images from your source code and deploy and manage their lifecycle. In
 order to do this, OpenShift can host its own Docker registry in
 order to pull images "locally". Let's take a moment to set that up.
 
-`openshift ex` again comes to our rescue with a handy installer for the
+`openshift admin` again comes to our rescue with a handy installer for the
 registry:
 
-    openshift ex registry --create \
+    openshift admin registry --create \
     --credentials=/var/lib/openshift/openshift.local.certificates/openshift-registry/.kubeconfig \
     --images='registry.access.redhat.com/openshift3_beta/ose-${component}:${version}'
 
